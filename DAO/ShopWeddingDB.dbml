@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLAC" Class="ShopWeddingDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-KTBEKC3\SQLEXPRESS;Initial Catalog=QLAC;Integrated Security=True" SettingsObjectName="DAO.Properties.Settings" SettingsPropertyName="QLACConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CATEGORY" Member="CATEGORies">
+    <Type Name="CATEGORY">
+      <Column Name="IDCATEGORY" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAMECATEGORY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="CATEGORY_PRODUCT" Member="PRODUCTs" ThisKey="IDCATEGORY" OtherKey="IDCATEGORY" Type="PRODUCT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CUSTOMER" Member="CUSTOMERs">
+    <Type Name="CUSTOMER">
+      <Column Name="IDCUSTOMER" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CUSTOMERNAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PHONENUMBER" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ADDRES" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IDCARD" Type="System.String" DbType="Char(25) NOT NULL" CanBeNull="false" />
+      <Association Name="CUSTOMER_CONTRACT" Member="CONTRACTs" ThisKey="IDCUSTOMER" OtherKey="IDCUSTOMER" Type="CONTRACT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCT" Member="PRODUCTs">
+    <Type Name="PRODUCT">
+      <Column Name="IDPRODUCT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAMEPRODUCT" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTIONPRODUCT" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="IDCATEGORY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IMAGEPRODUCT" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PRODUCT_CONTRACT" Member="CONTRACTs" ThisKey="IDPRODUCT" OtherKey="IDPRODUCT" Type="CONTRACT" />
+      <Association Name="PRODUCT_BILL" Member="BILLs" ThisKey="IDPRODUCT" OtherKey="IDPRODUCT" Type="BILL" />
+      <Association Name="CATEGORY_PRODUCT" Member="CATEGORY" ThisKey="IDCATEGORY" OtherKey="IDCATEGORY" Type="CATEGORY" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONTRACT" Member="CONTRACTs">
+    <Type Name="CONTRACT">
+      <Column Name="IDCONTRACT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CONTRACTDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DATERECEIVEPRODUCT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DATEPAY" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IDCUSTOMER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDSTAFF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDPRODUCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CONTRACT_BILL" Member="BILLs" ThisKey="IDCONTRACT" OtherKey="IDCONTRACT" Type="BILL" />
+      <Association Name="CUSTOMER_CONTRACT" Member="CUSTOMER" ThisKey="IDCUSTOMER" OtherKey="IDCUSTOMER" Type="CUSTOMER" IsForeignKey="true" />
+      <Association Name="PRODUCT_CONTRACT" Member="PRODUCT" ThisKey="IDPRODUCT" OtherKey="IDPRODUCT" Type="PRODUCT" IsForeignKey="true" />
+      <Association Name="STAFF_CONTRACT" Member="STAFF" ThisKey="IDSTAFF" OtherKey="IDSTAFF" Type="STAFF" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BILL" Member="BILLs">
+    <Type Name="BILL">
+      <Column Name="IDBILL" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AMOUNT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BILLINGDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TOTAL" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="IDCONTRACT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDPRODUCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CONTRACT_BILL" Member="CONTRACT" ThisKey="IDCONTRACT" OtherKey="IDCONTRACT" Type="CONTRACT" IsForeignKey="true" />
+      <Association Name="PRODUCT_BILL" Member="PRODUCT" ThisKey="IDPRODUCT" OtherKey="IDPRODUCT" Type="PRODUCT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.STAFF" Member="STAFFs">
+    <Type Name="STAFF">
+      <Column Name="IDSTAFF" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STAFFNAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PHONENUMBER" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ADDRES" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IDCARD" Type="System.String" DbType="Char(25) NOT NULL" CanBeNull="false" />
+      <Column Name="PASS" Type="System.String" DbType="Char(25) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="STAFF_CONTRACT" Member="CONTRACTs" ThisKey="IDSTAFF" OtherKey="IDSTAFF" Type="CONTRACT" />
+    </Type>
+  </Table>
+</Database>

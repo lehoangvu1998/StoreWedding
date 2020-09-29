@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.875" name="ShopWeddingDB">
+  <DataContextMoniker Name="/ShopWeddingDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="103cfaa9-b7b8-490a-b3e2-0788bc28f13f" absoluteBounds="0.75, 4.25, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/ShopWeddingDBDataContext/CATEGORY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80255bae-efff-4d40-9da2-35e1fdd381ac" absoluteBounds="0.765, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="edf02cc8-af4f-416c-8d69-08ff9ff12a5b" absoluteBounds="3.5, 7.5, 2, 1.9631982421874996">
+      <DataClassMoniker Name="/ShopWeddingDBDataContext/CUSTOMER" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e2cbb859-2714-4c9e-a663-b486a96525ae" absoluteBounds="3.515, 7.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ca7c3fcb-7ffe-4516-921a-00d57e095230" absoluteBounds="3.5, 3.75, 2, 2.155499674479167">
+      <DataClassMoniker Name="/ShopWeddingDBDataContext/PRODUCT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="46879f47-bee6-4c2b-90fb-70209527a584" absoluteBounds="3.515, 4.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 4.84699625651042); (3.5 : 4.84699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ShopWeddingDBDataContext/CATEGORY/CATEGORY_PRODUCT" />
+      <nodes>
+        <classShapeMoniker Id="103cfaa9-b7b8-490a-b3e2-0788bc28f13f" />
+        <classShapeMoniker Id="ca7c3fcb-7ffe-4516-921a-00d57e095230" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b64f772e-4068-4792-86b1-b1bf19cc8556" absoluteBounds="4.625, 1.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ShopWeddingDBDataContext/CONTRACT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="73028b8e-2e75-4379-ab94-658a274b3036" absoluteBounds="4.64, 1.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 9.37424967447917); (6.0000025 : 9.37424967447917); (6.0000025 : 3.28049967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ShopWeddingDBDataContext/CUSTOMER/CUSTOMER_CONTRACT" />
+      <nodes>
+        <classShapeMoniker Id="edf02cc8-af4f-416c-8d69-08ff9ff12a5b" />
+        <classShapeMoniker Id="b64f772e-4068-4792-86b1-b1bf19cc8556" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.0625 : 3.75); (5.0625 : 3.28049967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ShopWeddingDBDataContext/PRODUCT/PRODUCT_CONTRACT" />
+      <nodes>
+        <classShapeMoniker Id="ca7c3fcb-7ffe-4516-921a-00d57e095230" />
+        <classShapeMoniker Id="b64f772e-4068-4792-86b1-b1bf19cc8556" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d2990423-04bd-4a0c-b719-c857180404ce" absoluteBounds="6.875, 2.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ShopWeddingDBDataContext/BILL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31c04e3e-086e-4f09-a6e3-d27a2a08add9" absoluteBounds="6.89, 3.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.625 : 3.01524983723958); (6.875 : 3.01524983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ShopWeddingDBDataContext/CONTRACT/CONTRACT_BILL" />
+      <nodes>
+        <classShapeMoniker Id="b64f772e-4068-4792-86b1-b1bf19cc8556" />
+        <classShapeMoniker Id="d2990423-04bd-4a0c-b719-c857180404ce" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.23159912109375); (5.91666916666667 : 4.23159912109375 : JumpStart); (6.08333583333333 : 4.23159912109375 : JumpEnd); (6.19791991666667 : 4.23159912109375 : JumpStart); (6.36458658333333 : 4.23159912109375 : JumpEnd); (6.875 : 4.23159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ShopWeddingDBDataContext/PRODUCT/PRODUCT_BILL" />
+      <nodes>
+        <classShapeMoniker Id="ca7c3fcb-7ffe-4516-921a-00d57e095230" />
+        <classShapeMoniker Id="d2990423-04bd-4a0c-b719-c857180404ce" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="03e8b914-ea96-40ce-9e36-eff02e584d67" absoluteBounds="6.5, 6.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/ShopWeddingDBDataContext/STAFF" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8f9eeba1-91db-4637-887c-b7d3ff627fab" absoluteBounds="6.515, 7.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.5 : 7.15625); (6.28125325 : 7.15625); (6.28125325 : 3.28049967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ShopWeddingDBDataContext/STAFF/STAFF_CONTRACT" />
+      <nodes>
+        <classShapeMoniker Id="03e8b914-ea96-40ce-9e36-eff02e584d67" />
+        <classShapeMoniker Id="b64f772e-4068-4792-86b1-b1bf19cc8556" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
